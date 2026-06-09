@@ -13,18 +13,28 @@ st.set_page_config(
 )
 
 # -----------------------------
-# 🎨 PREMIUM UI STYLE
+# 🎨 PREMIUM UI STYLE (FIXED)
 # -----------------------------
 st.markdown("""
 <style>
 
-/* Background */
-.main {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #e2e8f0;
+/* FORCE FULL DARK BACKGROUND */
+html, body, .stApp {
+    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+    color: #e2e8f0 !important;
 }
 
-/* Hero Section */
+/* REMOVE WHITE CONTAINER */
+section[data-testid="stAppViewContainer"] {
+    background: transparent !important;
+}
+
+/* MAIN CONTAINER */
+.block-container {
+    padding-top: 2rem;
+}
+
+/* HERO */
 .hero {
     padding: 40px 20px;
     border-radius: 15px;
@@ -32,53 +42,46 @@ st.markdown("""
     margin-bottom: 25px;
 }
 
-/* Title */
+/* TITLE */
 .hero h1 {
     font-size: 48px;
     font-weight: 800;
-    color: #ffffff;
+    color: white;
 }
 
-/* Subtitle */
+/* SUBTITLE */
 .hero p {
-    font-size: 18px;
     color: #cbd5f5;
 }
 
-/* Cards */
+/* CARDS */
 .card {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255,255,255,0.05);
     padding: 20px;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 20px;
 }
 
-/* Section Headings */
-h3 {
-    color: #22d3ee !important;
-    font-weight: 700;
+/* SECTION HEADINGS */
+div[data-testid="stMarkdownContainer"] h3 {
+    color: #38bdf8 !important;
 }
 
-/* Labels */
-label {
+/* LABELS */
+.stSelectbox label, 
+.stNumberInput label {
     color: #e2e8f0 !important;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-/* Inputs */
+/* INPUTS */
 input, select {
-    border-radius: 8px !important;
     background-color: #020617 !important;
-    color: #ffffff !important;
-}
-
-/* Dropdown text */
-div[data-baseweb="select"] span {
     color: white !important;
 }
 
-/* Button */
+/* BUTTON */
 .stButton>button {
     background: linear-gradient(90deg, #7c3aed, #ec4899);
     color: white;
@@ -93,7 +96,7 @@ div[data-baseweb="select"] span {
     transform: scale(1.03);
 }
 
-/* Result Box */
+/* RESULT BOX */
 .result {
     background: linear-gradient(90deg, #6366f1, #ec4899);
     padding: 25px;
@@ -139,14 +142,14 @@ def format_indian_currency(num):
 st.markdown("""
 <div class="hero">
     <h1>🏠 Smart Property Valuation</h1>
-    <p>AI-powered house price prediction system</p>
+    <p>AI powered house price prediction system</p>
 </div>
 """, unsafe_allow_html=True)
 
 # -----------------------------
 # LAYOUT
 # -----------------------------
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1,1], gap="large")
 
 # -----------------------------
 # LEFT COLUMN
